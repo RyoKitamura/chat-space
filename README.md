@@ -17,20 +17,20 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|group_id|integer|null: false, foreign_key: true|
+|id|integer|null: false|
 |user_name|string|null: false|
-|user_email|string|null: false|
+|group_id|integer|null: false, foreign_key: true|
+|email|string|null: false|
 
 ### Association
-- has_many :group
-- has_many :message
+- has_many :groups, through: :groups_users
+- has_many :messages
 
 ## messages table
 
 |Column|Type|Options|
 |------|----|-------|
-|message_id|integer|null: false|
+|id|integer|null: false|
 |message|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
@@ -39,18 +39,31 @@ Things you may want to cover:
 - belongs_to :group
 - belongs_to :user
 
+## groups_users table
+
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false|
+|group_id|integer|null: false, foreign_key:true|
+|user_id|integer|null: false, foreign_key:true|
+
+### Association
+- belongs_to :user
+- belongs_to :group
+
 ## groups table
 
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|null: false|
+|id|integer|null: false|
 |group_name|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |message_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :user
-- has_many :message
+- has_many :users, through: :groups_users
+- has_many :messages
+
 
 * Database initialization
 
