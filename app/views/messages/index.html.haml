@@ -4,7 +4,7 @@
     .side__header__name
       =current_user.name
       %i
-        = link_to do
+        = link_to new_group_path do
           = fa_icon 'pencil-square-o', class: 'icon'
       %i
         = link_to edit_user_path(current_user) do
