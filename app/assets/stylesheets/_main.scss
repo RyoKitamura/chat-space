@@ -68,8 +68,44 @@
         color: $hey;
       }
     }
+
   }
-  .form{
+   .form {
+      background-color: $lightgray;
+      height: 90px;
+      font-size: 16px;
+      position: relative;
+      &__space {
+        margin: 20px 40px;
+        height: 50px;
+        color: #434A54;
+        float: left;
+        width: calc(100vw - 530px);
+        min-width: 300px;
+        padding-left: 10px;
+      }
+      &__icon {
+          position: absolute;
+          top: 35px;
+          right: 190px;
+          .icon {
+          }
+          .hidden {
+          }
+      }
+      &__button {
+        background-color: $skyblue;
+        color: $white;
+        float:right;
+        padding: 0 30px;
+        line-height: 50px;
+        position: absolute;
+        top: 20px;
+      }
+    }
+}
+
+.form2{
     background-color: $lightgray;
     box-sizing: border-box;
     height: 90px;
@@ -103,4 +139,3 @@
       }
     }
   }
-}

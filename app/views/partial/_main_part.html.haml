@@ -1,0 +1,20 @@
+.chat
+  .header
+    .main__header__group
+      %p.main__header__group__name
+        group1
+      %p.main__header__group__members
+        Member: group1
+    .main__header__edit
+      .edit__btn Edit
+  .messages
+    = render "partial/contents"
+
+  .form2
+    %form.main__footer__new{id: "new_message"}
+      .main__footer__body
+        %input.message__footer__textarea{name: "", placeholder: "type a message", type: "text"}
+        .select__image
+          %label.image_btn{for: "message_image"}
+            %i.fa.fa-image
+      %input.submit__btn{name: "", type: "submit", value: "send"}

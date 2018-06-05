@@ -1,4 +1,3 @@
-.wrapper
 .side__bar
   .side__header
     .side__header__name
@@ -11,6 +10,7 @@
           = fa_icon 'cog', class: 'icon'
   .groups
     = render "partial/group"
+
 .chat
   .header
     .main__header__group
@@ -21,15 +21,13 @@
     .main__header__edit
       .edit__btn Edit
   .messages
-    = render "partial/contents"
+    = render partial: 'message', collection: @messages
 
   .form
-    %form.main__footer__new{id: "new_message"}
-      .main__footer__body
-        %input.message__footer__textarea{name: "", placeholder: "type a message", type: "text"}
-        .select__image
-          %label.image_btn{for: "message_image"}
-            %i.fa.fa-image
-      %input.submit__btn{name: "", type: "submit", value: "send"}
-
-
+    = form_for [@group, @message] do |f|
+      = f.text_field :body, class: 'form__space', placeholder: 'type a message'
+      .form__icon
+        = f.label :image, class: 'form__icon__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden',style:'display:none'
+      = f.submit 'Send', class: 'form__button'
