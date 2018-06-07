@@ -5,7 +5,7 @@
     .main__message__date
       = message.created_at
   .main2__message
-    - if message.body.present?
+    - if message.content.present?
       .main__message__body
-        = message.body
+        = message.content
     = image_tag message.image.url, class: 'main2__image' if message.image.present?
