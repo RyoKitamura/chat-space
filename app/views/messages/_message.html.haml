@@ -7,5 +7,5 @@
   .main__message
     - if message.body.present?
       .main__message__body
-        = message.body
+        = message.content
     = image_tag message.image.url, class: 'main2__image' if message.image.present?
