@@ -11,13 +11,6 @@ $(function() {
       user_list.append(html);
   }
 
-  function appendNoUser(user) {
-    var html =`<div class="chat-group-user clearfix">
-                 <p class="chat-group-user__name">${ user }</p>
-               </div>`
-      user_list.append(html);
-  }
-
   function addUser(userId, userName) {
     var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
                  <input name='group[user_ids][]' type='hidden' value='${ userId }' class='chatuserid'>
