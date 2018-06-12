@@ -5,7 +5,7 @@ $(function() {
                   <p class="main__message__date">${message.created_at}</p>
                 </div>
                 <div class="main__message">
-                  <p class="main__message__body">${message.body}</p>
+                  <p class="main__message__body">${message.content}</p>
                   <span src:${message.image_url}, class="main2__image"></span>
                 </div>`
     return html;
