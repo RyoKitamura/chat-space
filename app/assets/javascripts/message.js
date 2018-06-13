@@ -33,4 +33,32 @@ $(function() {
       alert('エラーが発生しました');
     })
   });
+
+  var interval = setInterval(function() {
+      var messageId = $('.main__body__messages:last').attr('message_id');
+      if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      $.ajax({
+        url: location.href,
+        type: "GET",
+        data: { id: messageId },
+        dataType:'json',
+      })
+      .done(function(json){
+        if (json.length !== 0){
+        var insertHTML = '';
+        json.messages.forEach(function(messages){
+          insertHTML += buildHTML(messages);
+        });
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop: $('.messages').get(0).scrollHeight },400);
+        }
+       })
+
+      .fail(function(data) {
+        alert('自動更新に失敗しました');
+      });
+    } else {
+      clearInterval(interval);
+    };
+  } , 5000 );
 });
